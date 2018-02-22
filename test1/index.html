@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Vue test</title>
-
     </head>
     <body>
         <!-- Declarative rendering -->
@@ -13,11 +12,58 @@
         </div>
 
         <!-- binding element attributes -->
-        <!-- v-bind is a directive -->
+        <!-- v-bind is a directive. All directives are prefixed with a v- -->
         <div id="app-2">
             <span v-bind:title="message">
                 Hover your mouse over me for a few seconds to see dynamically bound title
             </span>
+        </div>
+
+        <!-- toggling visibility of an element -->
+        <!-- check js for more info -->
+        <div id="app-3">
+            <span v-if="seen">Now you see me</span>
+        </div>
+
+        <!-- for loop -->
+        <!-- loops through todos in what is essentially a foreach loop -->
+        <div id="app-4">
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+
+        <!-- Attaching event listeners -->
+        <!-- We assign a method on the click event called reverseMessage. Note:
+             we don't manipulate the DOM. Vue does it -->
+        <div id="app-5">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+
+        <!-- Two-way binding -->
+        <!-- the paragraph is attached to the model inside input. Thus, the 
+             paragraph will update any time that you change input -->
+        <div id="app-6">
+            <p>{{ message }}</p>
+            <input v-model="message">
+        </div>
+
+        <!-- Component that was defined in js -->
+        <!-- This is one way of defining it -->
+        <ol>
+            <todo-item></todo-item>
+        </ol>
+
+        <!-- Here is another that allows the passing of props -->
+        <div id="app-7">
+            <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+            </todo-item>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
