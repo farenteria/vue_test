@@ -114,3 +114,29 @@ data: {
     It's important to not use arrow functions on an options property callback since arrow
     functions are bound to parent context, 'this' will not point where you want it to 
 */
+
+// Computed Properties
+// JS in HTML should be simple. Anything else should be calculated within this file
+// Computed Properties are similar to functions in Vue instance, but are cached and
+// only update if a dependency changes
+/*
+    <div id="example">
+        <p>Original message: {{ message }}</p>
+        <p>Reversed message: {{ reverseMessage }}</p>
+    </div>
+    var vm = new Vue({
+        el: "#example",
+        data: {
+            message: "Hello"
+        },
+        computed: {
+            reversedMessage: function(){
+                return this.message.split("").reverse().join("")
+            }
+        }
+    })
+*/
+
+// Watchers
+/* These watch for any changes in certain variables and allow you to react to them asynchronously 
+*/
