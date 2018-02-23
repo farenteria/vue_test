@@ -68,3 +68,49 @@ var app_7 = new Vue({
         ]
     }
 });
+
+/* Vuew instance
+    inspired by Model View ViewModel pattern. Variable named vm as convention.
+    When you create a Vue instance, you pass an options object.
+    Vue apps consist of root Vue instance created with 'new Vue'.
+    When Vue instance is created, it adds all properties found in data object to Vue's rectivity system.
+
+*/
+// data object
+var data = { a: 1 };
+// adding data object to Vuew instance
+var vm = new Vue({
+    data: data
+});
+// these refer to same object
+vm.a === data.a;
+// this means that setting property to one object will affect the other
+vm.a = 2;
+data.a; // this will now be 2 as well
+/* When data changes, view will be rerendered. However, this is only true if data properties existed
+    when instance was created. Any properties added afterwards will not trigger a rerender. To trigger
+    this, you'll need to add empty properties to data object beforehand.   
+
+data: {
+    newTodoText: "",
+    visitCount: 0,
+    hideCompletedToDos: false
+};
+*/
+
+// Instance lifecycle hooks
+/* While Vue is being initialized, lifecycle functions hooks are called to allow users to add
+    code to specific stages of the Vue lifecycle.
+    For example, the created() function can be used to run code after an instance is created
+    new Vue({
+        data: {
+            a: 1
+        },
+        created: function(){
+            // this points to the vm instance
+            console.log('a is: ' + this.a)
+        }
+    });
+    It's important to not use arrow functions on an options property callback since arrow
+    functions are bound to parent context, 'this' will not point where you want it to 
+*/
